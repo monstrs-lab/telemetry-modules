@@ -9,7 +9,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "@monstrs/tools-runtime": "^0.0.5",
+    "@monstrs/tools-runtime": "^0.0.6",
     "@types/node": "^20.2.5",
     "husky": "8.0.3",
     "typescript": "^5.0.4"
