@@ -1,0 +1,30 @@
+name: Tools
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update:
+    name: Update Tools
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '19.9'
+
+      - name: Install
+        run: yarn install
+
+      - name: Checkout Tools
+        uses: actions/checkout@v3
+        with:
+          repository: monstrs-lab/tools
+          path: /tools
+          ref: master
