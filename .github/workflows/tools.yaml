@@ -32,11 +32,10 @@ jobs:
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
         with:
-          message: 'chore(common): update tools'
-          committer_name: GitHub Actions
-          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
+          commit-message: 'feat: update tools'
+          title: 'feat: update tools'
+          branch-suffix: random
+          delete-branch: true
