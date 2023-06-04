@@ -39,3 +39,5 @@ jobs:
           title: 'feat: update tools'
           branch-suffix: random
           delete-branch: true
+          body: |
+            Update tools to ${{ inputs.version }}.
