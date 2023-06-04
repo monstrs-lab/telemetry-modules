@@ -30,5 +30,6 @@ jobs:
       - name: Update
         run: yarn set version https://www.unpkg.com/@monstrs/yarn-cli@${{ inputs.version }}/dist/yarn.cjs
         env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
           GITHUB_ACTIONS: 'false'
           CI: 'false'
