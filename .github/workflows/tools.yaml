@@ -31,5 +31,12 @@ jobs:
         run: yarn set version https://www.unpkg.com/@monstrs/yarn-cli@${{ inputs.version }}/dist/yarn.cjs
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
-          GITHUB_ACTIONS: 'false'
-          CI: 'false'
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+        with:
+          message: 'chore(common): update tools'
+          committer_name: GitHub Actions
+          committer_email: 41898282+github-actions[bot]@users.noreply.github.com
