@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -26,5 +30,8 @@
     "strict": true,
     "noImplicitAny": false
   },
-  "include": ["project.types.d.ts", "packages/**/*"]
+  "include": [
+    "project.types.d.ts",
+    "packages/**/*"
+  ]
 }
