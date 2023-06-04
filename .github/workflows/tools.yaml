@@ -1,0 +1,31 @@
+name: Tools
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Tools yarn version'
+        type: string
+        required: true
+
+jobs:
+  update:
+    name: Update Tools
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '19.9'
+
+      - name: Install
+        run: yarn install
+
+      - name: Update
+        run: yarn set version https://www.unpkg.com/@monstrs/yarn-cli@${{ inputs.version }}/dist/yarn.cjs
