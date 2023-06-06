@@ -5,7 +5,10 @@ import { ConsoleLogRecordExporter as BaseConsoleLogRecordExporter } from '@opent
 import { ExportResultCode }                                         from '@opentelemetry/core'
 
 export class ConsoleLogRecordExporter extends BaseConsoleLogRecordExporter {
-  public export(logs: Array<ReadableLogRecord>, resultCallback: (result: ExportResult) => void) {
+  public export(
+    logs: Array<ReadableLogRecord>,
+    resultCallback: (result: ExportResult) => void
+  ): void {
     this.sendLogRecords(logs, resultCallback)
   }
 
