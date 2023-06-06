@@ -66,7 +66,7 @@ export class Logger {
     }
   }
 
-  child(name: string, attributes: Attributes = {}) {
+  child(name: string, attributes: Attributes = {}): Logger {
     return new Logger([this.name, name].filter(Boolean).join(':'), {
       ...this.attributes,
       ...attributes,
