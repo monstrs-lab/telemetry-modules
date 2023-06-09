@@ -8,4 +8,5 @@ const severityTextByNumber = Object.keys(SeverityNumber).reduce(
   {}
 )
 
-export const severityNumberToText = (severityNumber): string => severityTextByNumber[severityNumber]
+export const severityNumberToText = (severityNumber: number): string =>
+  severityTextByNumber[severityNumber]
