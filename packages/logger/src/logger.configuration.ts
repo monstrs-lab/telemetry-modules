@@ -5,6 +5,14 @@ export class LoggerConfiguration {
 
   private static debug: Array<string>
 
+  static accept(severityNumber: SeverityNumber, debug?: string): boolean {
+    if (debug && LoggerConfiguration.getDebug().includes(debug)) {
+      return true
+    }
+
+    return severityNumber >= LoggerConfiguration.getSeverityNumber()
+  }
+
   private static getSeverityNumber(): SeverityNumber {
     if (!LoggerConfiguration.severityNumber) {
       if (process.env.LOG_LEVEL) {
@@ -26,13 +34,5 @@ export class LoggerConfiguration {
     }
 
     return LoggerConfiguration.debug
-  }
-
-  static accept(severityNumber: SeverityNumber, debug?: string): boolean {
-    if (debug && LoggerConfiguration.getDebug().includes(debug)) {
-      return true
-    }
-
-    return severityNumber >= LoggerConfiguration.getSeverityNumber()
   }
 }
