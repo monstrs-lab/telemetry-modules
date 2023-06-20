@@ -4,13 +4,14 @@
 import { isMainThread } from 'node:worker_threads'
 
 import SonicBoomPkg     from 'sonic-boom'
+// @ts-expect-error
 import onExit           from 'on-exit-leak-free'
 
 const SonicBoom = SonicBoomPkg.default || SonicBoomPkg
 
 function noop() {}
 
-function autoEnd(stream, eventName) {
+function autoEnd(stream: any, eventName: string) {
   if (stream.destroyed) {
     return
   }
@@ -38,18 +39,19 @@ export const build = () => {
     })
   }
 
-  function filterBrokenPipe(err) {
-    if (err.code === 'EPIPE') {
+  function filterBrokenPipe(error: unknown) {
+    if ((error as any).code === 'EPIPE') {
       // @ts-ignore
       stream.write = noop
       stream.end = noop
       stream.flushSync = noop
       stream.destroy = noop
+
       return
     }
 
     stream.removeListener('error', filterBrokenPipe)
-    stream.emit('error', err)
+    stream.emit('error', error)
   }
 
   return stream
