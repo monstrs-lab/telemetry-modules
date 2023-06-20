@@ -7,7 +7,7 @@ import { ExportResultCode }         from '@opentelemetry/core'
 import { build }                    from './sonic-boom.utils.js'
 
 export class SonicBoomLogRecordExporter extends ConsoleLogRecordExporter {
-  #stream: { write: (string) => void }
+  #stream: { write: (record: string) => void }
 
   constructor() {
     super()

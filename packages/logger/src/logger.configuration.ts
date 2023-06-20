@@ -17,8 +17,8 @@ export class LoggerConfiguration {
     if (!LoggerConfiguration.severityNumber) {
       if (process.env.LOG_LEVEL) {
         LoggerConfiguration.severityNumber =
-          SeverityNumber[process.env.LOG_LEVEL] >= 0
-            ? SeverityNumber[process.env.LOG_LEVEL]
+          SeverityNumber[process.env.LOG_LEVEL as keyof typeof SeverityNumber] !== undefined
+            ? SeverityNumber[process.env.LOG_LEVEL as keyof typeof SeverityNumber]
             : SeverityNumber.INFO
       } else {
         LoggerConfiguration.severityNumber = SeverityNumber.INFO
