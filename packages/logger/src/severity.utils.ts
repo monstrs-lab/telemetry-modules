@@ -1,12 +1,14 @@
 import { SeverityNumber } from '@opentelemetry/api-logs'
 
-const severityTextByNumber = Object.keys(SeverityNumber).reduce(
+const severityTextByNumber: Record<number, keyof SeverityNumber> = Object.keys(
+  SeverityNumber
+).reduce(
   (result, key) => ({
     ...result,
-    [SeverityNumber[key]]: key,
+    [SeverityNumber[key as keyof typeof SeverityNumber]]: key,
   }),
   {}
 )
 
 export const severityNumberToText = (severityNumber: number): string =>
-  severityTextByNumber[severityNumber] as string
+  severityTextByNumber[severityNumber]
