@@ -19,38 +19,43 @@ export class Logger {
   ) {}
 
   unspecified(body: string, attributes?: Attributes, context?: Context): void {
-    this.log(SeverityNumber.UNSPECIFIED, body, attributes)
+    this.log(SeverityNumber.UNSPECIFIED, body, attributes, context)
   }
 
   trace(body: string, attributes?: Attributes, context?: Context): void {
-    this.log(SeverityNumber.TRACE, body, attributes)
+    this.log(SeverityNumber.TRACE, body, attributes, context)
   }
 
   debug(body: string, attributes?: Attributes, context?: Context): void {
-    this.log(SeverityNumber.DEBUG, body, attributes)
+    this.log(SeverityNumber.DEBUG, body, attributes, context)
   }
 
   info(body: string, attributes?: Attributes, context?: Context): void {
-    this.log(SeverityNumber.INFO, body, attributes)
+    this.log(SeverityNumber.INFO, body, attributes, context)
   }
 
   warn(body: string, attributes?: Attributes, context?: Context): void {
-    this.log(SeverityNumber.WARN, body, attributes)
+    this.log(SeverityNumber.WARN, body, attributes, context)
   }
 
   error(body: Error | string, attributes?: Attributes, context?: Context): void {
     if (body instanceof Error) {
-      this.log(SeverityNumber.ERROR, body.message, {
-        ...(attributes || {}),
-        '@stack': body.stack,
-      })
+      this.log(
+        SeverityNumber.ERROR,
+        body.message,
+        {
+          ...(attributes || {}),
+          '@stack': body.stack,
+        },
+        context
+      )
     } else {
-      this.log(SeverityNumber.ERROR, body, attributes)
+      this.log(SeverityNumber.ERROR, body, attributes, context)
     }
   }
 
   fatal(body: string, attributes?: Attributes, context?: Context): void {
-    this.log(SeverityNumber.FATAL, body, attributes)
+    this.log(SeverityNumber.FATAL, body, attributes, context)
   }
 
   log(

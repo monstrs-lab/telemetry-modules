@@ -15,7 +15,7 @@ export class SonicBoomLogRecordExporter extends ConsoleLogRecordExporter {
     this.#stream = build()
   }
 
-  public export(
+  public override export(
     logs: Array<ReadableLogRecord>,
     resultCallback: (result: ExportResult) => void
   ): void {
