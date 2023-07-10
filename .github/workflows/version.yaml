@@ -7,5 +7,5 @@ on:
       - master
 
 jobs:
-  checks:
+  version:
     uses: monstrs-lab/shared/.github/workflows/version.yaml@master
