@@ -18,15 +18,15 @@
   },
   "dependencies": {
     "@opentelemetry/api": "*",
-    "@opentelemetry/api-logs": "^0.39.1",
+    "@opentelemetry/api-logs": "^0.41.0",
     "@opentelemetry/core": "*",
-    "@opentelemetry/sdk-logs": "^0.39.1",
+    "@opentelemetry/sdk-logs": "^0.41.0",
     "on-exit-leak-free": "^2.1.0",
     "sonic-boom": "^3.3.0"
   },
   "devDependencies": {
-    "@jest/globals": "^29.5.0",
-    "@types/node": "^20.2.5"
+    "@jest/globals": "^29.6.1",
+    "@types/node": "^20.4.1"
   },
   "publishConfig": {
     "access": "public",
