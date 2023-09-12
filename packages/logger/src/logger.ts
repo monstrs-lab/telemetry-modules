@@ -1,6 +1,6 @@
 import type { LoggerOptions }              from '@opentelemetry/api-logs'
 import type { LogRecord }                  from '@opentelemetry/api-logs'
-import type { Attributes }                 from '@opentelemetry/api'
+import type { LogAttributes }              from '@opentelemetry/api-logs'
 import type { Context }                    from '@opentelemetry/api'
 
 import { SeverityNumber }                  from '@opentelemetry/api-logs'
@@ -13,32 +13,32 @@ import { severityNumberToText }            from './severity.utils.js'
 export class Logger {
   constructor(
     private readonly name: string = 'default',
-    private readonly attributes: Attributes = {},
+    private readonly attributes: LogAttributes = {},
     private readonly version?: string,
     private readonly options?: LoggerOptions
   ) {}
 
-  unspecified(body: string, attributes?: Attributes, context?: Context): void {
+  unspecified(body: string, attributes?: LogAttributes, context?: Context): void {
     this.log(SeverityNumber.UNSPECIFIED, body, attributes, context)
   }
 
-  trace(body: string, attributes?: Attributes, context?: Context): void {
+  trace(body: string, attributes?: LogAttributes, context?: Context): void {
     this.log(SeverityNumber.TRACE, body, attributes, context)
   }
 
-  debug(body: string, attributes?: Attributes, context?: Context): void {
+  debug(body: string, attributes?: LogAttributes, context?: Context): void {
     this.log(SeverityNumber.DEBUG, body, attributes, context)
   }
 
-  info(body: string, attributes?: Attributes, context?: Context): void {
+  info(body: string, attributes?: LogAttributes, context?: Context): void {
     this.log(SeverityNumber.INFO, body, attributes, context)
   }
 
-  warn(body: string, attributes?: Attributes, context?: Context): void {
+  warn(body: string, attributes?: LogAttributes, context?: Context): void {
     this.log(SeverityNumber.WARN, body, attributes, context)
   }
 
-  error(body: Error | string, attributes?: Attributes, context?: Context): void {
+  error(body: Error | string, attributes?: LogAttributes, context?: Context): void {
     if (body instanceof Error) {
       this.log(
         SeverityNumber.ERROR,
@@ -54,14 +54,14 @@ export class Logger {
     }
   }
 
-  fatal(body: string, attributes?: Attributes, context?: Context): void {
+  fatal(body: string, attributes?: LogAttributes, context?: Context): void {
     this.log(SeverityNumber.FATAL, body, attributes, context)
   }
 
   log(
     severityNumber: SeverityNumber,
     body: string,
-    attributes?: Attributes,
+    attributes?: LogAttributes,
     context?: Context
   ): void {
     if (LoggerConfiguration.accept(severityNumber, this.name)) {
@@ -71,7 +71,7 @@ export class Logger {
     }
   }
 
-  child(name: string, attributes: Attributes = {}): Logger {
+  child(name: string, attributes: LogAttributes = {}): Logger {
     return new Logger([this.name, name].filter(Boolean).join(':'), {
       ...this.attributes,
       ...attributes,
@@ -81,7 +81,7 @@ export class Logger {
   protected buildRecord(
     severityNumber: SeverityNumber,
     body: string,
-    attributes: Attributes = {},
+    attributes: LogAttributes = {},
     context?: Context
   ): LogRecord {
     return {
