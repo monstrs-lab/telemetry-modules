@@ -1,12 +1,12 @@
 import type { LoggerProvider as ApiLoggerProvider } from '@opentelemetry/api-logs'
 
-import { LoggerProvider }                           from '@opentelemetry/sdk-logs'
 import { NoopLoggerProvider }                       from '@opentelemetry/api-logs'
+import { LoggerProvider }                           from '@opentelemetry/sdk-logs'
 import { SimpleLogRecordProcessor }                 from '@opentelemetry/sdk-logs'
 import { logs }                                     from '@opentelemetry/api-logs'
 
-import { SonicBoomLogRecordExporter }               from './sonic-boom-log-record.exporter.js'
 import { ConsoleLogRecordExporter }                 from './console-log-record.exporter.js'
+import { SonicBoomLogRecordExporter }               from './sonic-boom-log-record.exporter.js'
 
 export class LoggerApi {
   private static initialized: boolean = false
