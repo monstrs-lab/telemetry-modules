@@ -1,13 +1,13 @@
+import type { Context }                    from '@opentelemetry/api'
 import type { LoggerOptions }              from '@opentelemetry/api-logs'
 import type { LogRecord }                  from '@opentelemetry/api-logs'
 import type { LogAttributes }              from '@opentelemetry/api-logs'
-import type { Context }                    from '@opentelemetry/api'
 
 import { SeverityNumber }                  from '@opentelemetry/api-logs'
 
+import { LoggerApi }                       from './logger.api.js'
 import { LoggerConfiguration }             from './logger.configuration.js'
 import { LOGGER_NAMESPACE_ATTRIBUTE_NAME } from './logger.constants.js'
-import { LoggerApi }                       from './logger.api.js'
 import { severityNumberToText }            from './severity.utils.js'
 
 export class Logger {

@@ -1,8 +1,8 @@
-import type { ReadableLogRecord }                                   from '@opentelemetry/sdk-logs'
 import type { ExportResult }                                        from '@opentelemetry/core'
+import type { ReadableLogRecord }                                   from '@opentelemetry/sdk-logs'
 
-import { ConsoleLogRecordExporter as BaseConsoleLogRecordExporter } from '@opentelemetry/sdk-logs'
 import { ExportResultCode }                                         from '@opentelemetry/core'
+import { ConsoleLogRecordExporter as BaseConsoleLogRecordExporter } from '@opentelemetry/sdk-logs'
 
 export class ConsoleLogRecordExporter extends BaseConsoleLogRecordExporter {
   public override export(
