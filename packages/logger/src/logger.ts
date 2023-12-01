@@ -38,7 +38,7 @@ export class Logger {
     this.log(SeverityNumber.WARN, body, attributes, context)
   }
 
-  error(body: Error | string, attributes?: LogAttributes, context?: Context): void {
+  error(body: unknown, attributes?: LogAttributes, context?: Context): void {
     if (body instanceof Error) {
       this.log(
         SeverityNumber.ERROR,
@@ -50,7 +50,7 @@ export class Logger {
         context
       )
     } else {
-      this.log(SeverityNumber.ERROR, body, attributes, context)
+      this.log(SeverityNumber.ERROR, body as string, attributes, context)
     }
   }
 
